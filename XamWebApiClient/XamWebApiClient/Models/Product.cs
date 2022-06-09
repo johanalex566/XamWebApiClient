@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace XamWebApiClient.Models
 {
-    public class Book
+    public class Product
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
@@ -18,5 +18,8 @@ namespace XamWebApiClient.Models
 
         [JsonPropertyName("description")]
         public string Description { get; set; }
+
+        [JsonPropertyName("Quantity")]
+        public string Quantity { get; set; }
     }
 }

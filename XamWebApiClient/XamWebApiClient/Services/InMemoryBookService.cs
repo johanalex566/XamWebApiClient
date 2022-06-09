@@ -7,39 +7,39 @@ namespace XamWebApiClient.Services
 {
     public class InMemoryBookService : IBookService
     {
-        private readonly List<Book> _books = new List<Book>();
+        private readonly List<Product> _books = new List<Product>();
         public InMemoryBookService()
         {
-            _books.Add(new Book { Id = 1, Name = "Clean code", ProductValue = 250, Description = "A book about good code" });
-            _books.Add(new Book { Id = 2, Name = "The pragmatic programmer", ProductValue = 100, Description = "All about pragmatism" });
-            _books.Add(new Book { Id = 3, Name = "Refactoring", ProductValue = 300, Description = "Working with legacy code" });
+            _books.Add(new Product { Id = 1, Name = "Clean code", ProductValue = 250, Description = "A book about good code" });
+            _books.Add(new Product { Id = 2, Name = "The pragmatic programmer", ProductValue = 100, Description = "All about pragmatism" });
+            _books.Add(new Product { Id = 3, Name = "Refactoring", ProductValue = 300, Description = "Working with legacy code" });
         }
 
-        public Task AddBook(Book book)
+        public Task AddBook(Product book)
         {
             book.Id = ++_books.Last().Id;
             _books.Add(book);
             return Task.CompletedTask;
         }
 
-        public Task DeleteBook(Book book)
+        public Task DeleteBook(Product book)
         {
             _books.Remove(book);
             return Task.CompletedTask;
         }
 
-        public Task<Book> GetBook(int id)
+        public Task<Product> GetBook(int id)
         {
             var book = _books.FirstOrDefault(b => b.Id == id);
             return Task.FromResult(book);
         }
 
-        public Task<IEnumerable<Book>> GetBooks()
+        public Task<IEnumerable<Product>> GetBooks()
         {
             return Task.FromResult( _books.AsEnumerable());
         }
 
-        public Task SaveBook(Book book)
+        public Task SaveBook(Product book)
         {
             _books[_books.FindIndex(b => b.Id == book.Id)] = book;
             return Task.CompletedTask;

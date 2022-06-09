@@ -16,27 +16,27 @@ namespace XamWebApiClient.Services
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Book>> GetBooks()
+        public async Task<IEnumerable<Product>> GetBooks()
         {
             var response = await _httpClient.GetAsync("GetProducts");
 
             response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+            return JsonSerializer.Deserialize<IEnumerable<Product>>(responseAsString);
         }
 
-        public async Task<Book> GetBook(int id)
+        public async Task<Product> GetBook(int id)
         {
             var response = await _httpClient.GetAsync($"Products/{id}");
 
             response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<Book>(responseAsString);
+            return JsonSerializer.Deserialize<Product>(responseAsString);
         }
 
-        public async Task AddBook(Book book)
+        public async Task AddBook(Product book)
         {
             var response = await _httpClient.PostAsync("Products",
                 new StringContent(JsonSerializer.Serialize(book), Encoding.UTF8, "application/json"));
@@ -44,14 +44,14 @@ namespace XamWebApiClient.Services
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task DeleteBook(Book book)
+        public async Task DeleteBook(Product book)
         {
             var response = await _httpClient.DeleteAsync($"Products/{book.Id}");
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task SaveBook(Book book)
+        public async Task SaveBook(Product book)
         {
             var response = await _httpClient.PutAsync($"Products?id={book.Id}",
                 new StringContent(JsonSerializer.Serialize(book), Encoding.UTF8, "application/json"));

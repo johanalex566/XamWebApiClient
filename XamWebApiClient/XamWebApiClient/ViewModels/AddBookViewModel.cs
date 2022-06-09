@@ -25,7 +25,7 @@ namespace XamWebApiClient.ViewModels
         {
             try
             {
-                var book = new Book
+                var book = new Product
                 {
                     Name = Name,
                     ProductValue = ProductValue,

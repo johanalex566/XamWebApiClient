@@ -11,23 +11,23 @@ namespace XamWebApiClient.ViewModels
 {
     public class BooksViewModel : BaseViewModel
     {
-        private ObservableCollection<Book> books;
-        private Book selectedBook;
+        private ObservableCollection<Product> books;
+        private Product selectedBook;
         private readonly IBookService _bookService;
 
         public BooksViewModel(IBookService bookService)
         {
             _bookService = bookService;
 
-            Books = new ObservableCollection<Book>();
+            Books = new ObservableCollection<Product>();
 
-            DeleteBookCommand = new Command<Book>(async b => await DeleteBook(b));
+            DeleteBookCommand = new Command<Product>(async b => await DeleteBook(b));
 
             AddNewBookCommand = new Command(async () => await GoToAddbookView());
            
         }
 
-        private async Task DeleteBook(Book b)
+        private async Task DeleteBook(Product b)
         {
             await _bookService.DeleteBook(b);
 
@@ -55,7 +55,7 @@ namespace XamWebApiClient.ViewModels
             }
         }
 
-        async void OnBookSelected(Book book)
+        async void OnBookSelected(Product book)
         {
             if (book == null)
                 return;
@@ -63,7 +63,7 @@ namespace XamWebApiClient.ViewModels
             await Shell.Current.GoToAsync($"{nameof(BookDetails)}?{nameof(BookDetailsViewModel.BookId)}={book.Id}");
         }
 
-        public ObservableCollection<Book> Books
+        public ObservableCollection<Product> Books
         {
             get => books;
             set
@@ -73,7 +73,7 @@ namespace XamWebApiClient.ViewModels
             }
         }
 
-        public Book SelectedBook
+        public Product SelectedBook
         {
             get => selectedBook;
             set

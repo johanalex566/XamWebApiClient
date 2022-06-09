@@ -5,18 +5,13 @@
     <ContentPage.Content>
         <StackLayout Margin="20">
             <StackLayout>
-                <Label Text="Nombre" />
+                <Label Text="Nombre cliente" />
                 <Entry Text="{Binding Name}" />
             </StackLayout>
 
             <StackLayout>
-                <Label Text="Valor" />
-                <Entry Text="{Binding ProductValue}" />
-            </StackLayout>
-
-            <StackLayout>
-                <Label Text="Description" />
-                <Editor Text="{Binding Description}" />
+                <Label Text="Cantidad a comprar" />
+                <Entry Text="{Binding Quantity}" />
             </StackLayout>
 
             <Button Text="Comprar"

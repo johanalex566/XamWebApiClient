@@ -27,7 +27,7 @@ namespace XamWebApiClient.ViewModels
         {
             try
             {
-                var book = new Book
+                var book = new Product
                 {
                     Id = int.Parse(BookId),
                     Name = Name,
