@@ -19,7 +19,7 @@
                 <Editor Text="{Binding Description}" />
             </StackLayout>
 
-            <Button Text="Save"
+            <Button Text="Comprar"
                     Command="{Binding SaveBookCommand}" />
 
         </StackLayout>

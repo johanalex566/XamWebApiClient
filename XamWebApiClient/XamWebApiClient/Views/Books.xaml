@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamWebApiClient.Views.Books">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New Book" Command="{Binding AddNewBookCommand}" />
+        <!--<ToolbarItem Text="New Book" Command="{Binding AddNewBookCommand}" />-->
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <CollectionView 

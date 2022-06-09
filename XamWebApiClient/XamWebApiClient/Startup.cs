@@ -12,14 +12,15 @@ namespace XamWebApiClient
         {
             var services = new ServiceCollection();
 
-            //add services
-            //services.AddHttpClient<IBookService, ApiBookService>(c => 
-            //{
-            //    c.BaseAddress = new Uri("http://10.0.2.2:52236/api/");
-            //    c.DefaultRequestHeaders.Add("Accept", "application/json");
-            //});
+            //     add services
 
-            services.AddSingleton<IBookService, InMemoryBookService>();
+            services.AddHttpClient<IBookService, ApiBookService>(c =>
+            {
+                c.BaseAddress = new Uri("https://appaccessorysales.azurewebsites.net/api/AccessorySales/");
+                c.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
+
+            //services.AddSingleton<IBookService, InMemoryBookService>();
 
             //add viewmodels
             services.AddTransient<BooksViewModel>();

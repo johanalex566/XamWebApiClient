@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using XamWebApiClient.Models;
 
@@ -20,7 +18,7 @@ namespace XamWebApiClient.Services
 
         public async Task<IEnumerable<Book>> GetBooks()
         {
-            var response = await _httpClient.GetAsync("Books");
+            var response = await _httpClient.GetAsync("GetProducts");
 
             response.EnsureSuccessStatusCode();
 
@@ -30,7 +28,7 @@ namespace XamWebApiClient.Services
 
         public async Task<Book> GetBook(int id)
         {
-            var response = await _httpClient.GetAsync($"Books/{id}");
+            var response = await _httpClient.GetAsync($"Products/{id}");
 
             response.EnsureSuccessStatusCode();
 
@@ -40,7 +38,7 @@ namespace XamWebApiClient.Services
 
         public async Task AddBook(Book book)
         {
-            var response = await _httpClient.PostAsync("Books", 
+            var response = await _httpClient.PostAsync("Products",
                 new StringContent(JsonSerializer.Serialize(book), Encoding.UTF8, "application/json"));
 
             response.EnsureSuccessStatusCode();
@@ -48,14 +46,14 @@ namespace XamWebApiClient.Services
 
         public async Task DeleteBook(Book book)
         {
-            var response = await _httpClient.DeleteAsync($"Books/{book.Id}");
+            var response = await _httpClient.DeleteAsync($"Products/{book.Id}");
 
             response.EnsureSuccessStatusCode();
-        }      
+        }
 
         public async Task SaveBook(Book book)
         {
-            var response = await _httpClient.PutAsync($"Books?id={book.Id}",
+            var response = await _httpClient.PutAsync($"Products?id={book.Id}",
                 new StringContent(JsonSerializer.Serialize(book), Encoding.UTF8, "application/json"));
 
             response.EnsureSuccessStatusCode();

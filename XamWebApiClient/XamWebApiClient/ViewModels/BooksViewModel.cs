@@ -24,6 +24,7 @@ namespace XamWebApiClient.ViewModels
             DeleteBookCommand = new Command<Book>(async b => await DeleteBook(b));
 
             AddNewBookCommand = new Command(async () => await GoToAddbookView());
+           
         }
 
         private async Task DeleteBook(Book b)
