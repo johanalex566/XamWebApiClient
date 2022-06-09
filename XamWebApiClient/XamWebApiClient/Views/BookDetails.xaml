@@ -10,8 +10,8 @@
             </StackLayout>
 
             <StackLayout>
-                <Label Text="Author" />
-                <Entry Text="{Binding Author}" />
+                <Label Text="Valor" />
+                <Entry Text="{Binding ProductValue}" />
             </StackLayout>
 
             <StackLayout>

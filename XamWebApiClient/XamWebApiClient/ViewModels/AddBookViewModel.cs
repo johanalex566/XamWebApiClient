@@ -11,7 +11,7 @@ namespace XamWebApiClient.ViewModels
     {
         private readonly IBookService _bookService;
         private string name;
-        private string author;
+        private decimal productValue;
         private string description;
 
         public AddBookViewModel(IBookService bookService)
@@ -28,7 +28,7 @@ namespace XamWebApiClient.ViewModels
                 var book = new Book
                 {
                     Name = Name,
-                    Author = Author,
+                    ProductValue = ProductValue,
                     Description = Description
                 };
 
@@ -51,13 +51,13 @@ namespace XamWebApiClient.ViewModels
                 OnPropertyChanged(nameof(Name));
             }
         }
-        public string Author
+        public decimal ProductValue
         {
-            get => author; 
+            get => productValue; 
             set
             {
-                author = value;
-                OnPropertyChanged(nameof(Author));
+                productValue = value;
+                OnPropertyChanged(nameof(ProductValue));
             }
         }
         public string Description

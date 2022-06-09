@@ -24,7 +24,7 @@
                         </SwipeView.RightItems>
                         <StackLayout Padding="10">
                             <Label Text="{Binding Name}" FontSize="Medium" />
-                            <Label Text="{Binding Author}" FontSize="Subtitle" />
+                            <Label Text="{Binding ProductValue}" FontSize="Subtitle" />
                         </StackLayout>
                     </SwipeView>
                 </DataTemplate>

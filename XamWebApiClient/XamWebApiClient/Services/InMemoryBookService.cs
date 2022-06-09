@@ -10,9 +10,9 @@ namespace XamWebApiClient.Services
         private readonly List<Book> _books = new List<Book>();
         public InMemoryBookService()
         {
-            _books.Add(new Book { Id = 1, Name = "Clean code", Author = "Robert C Martin", Description = "A book about good code" });
-            _books.Add(new Book { Id = 2, Name = "The pragmatic programmer", Author = "Andy hunt", Description = "All about pragmatism" });
-            _books.Add(new Book { Id = 3, Name = "Refactoring", Author = "Kent Beck", Description = "Working with legacy code" });
+            _books.Add(new Book { Id = 1, Name = "Clean code", ProductValue = 250, Description = "A book about good code" });
+            _books.Add(new Book { Id = 2, Name = "The pragmatic programmer", ProductValue = 100, Description = "All about pragmatism" });
+            _books.Add(new Book { Id = 3, Name = "Refactoring", ProductValue = 300, Description = "Working with legacy code" });
         }
 
         public Task AddBook(Book book)
