@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using SQLite;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -7,13 +10,18 @@ using XamWebApiClient.Models;
 
 namespace XamWebApiClient.Services
 {
+
     public class ApiBookService : IBookService
     {
+        SQLiteAsyncConnection database;
+        string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Notes.db3");
+
         private readonly HttpClient _httpClient;
 
         public ApiBookService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+    
         }
 
         public async Task<IEnumerable<Product>> GetBooks()
@@ -53,10 +61,10 @@ namespace XamWebApiClient.Services
 
         public async Task SaveBook(Product book)
         {
-            var response = await _httpClient.PutAsync($"Products?id={book.Id}",
-                new StringContent(JsonSerializer.Serialize(book), Encoding.UTF8, "application/json"));
+            database = new SQLiteAsyncConnection(dbPath);
+            database.CreateTableAsync<Product>().Wait();
 
-            response.EnsureSuccessStatusCode();
+            database.InsertAsync(book);
         }
     }
 }

@@ -11,8 +11,7 @@ namespace XamWebApiClient.Services
         public InMemoryBookService()
         {
             _books.Add(new Product { Id = 1, Name = "Clean code", ProductValue = 250, Description = "A book about good code" });
-            _books.Add(new Product { Id = 2, Name = "The pragmatic programmer", ProductValue = 100, Description = "All about pragmatism" });
-            _books.Add(new Product { Id = 3, Name = "Refactoring", ProductValue = 300, Description = "Working with legacy code" });
+  ;
         }
 
         public Task AddBook(Product book)
